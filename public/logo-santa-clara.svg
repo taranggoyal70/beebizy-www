@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" fill="none" role="img" aria-label="Santa Clara University">
+  <!--
+    Hand-built wordmark, matching the other logos in the trusted-by row
+    (logo-marriott.svg, logo-babylist.svg): system fonts, no licensed outlines.
+    A serif lockup reads as academic next to three corporate marks, and the
+    two-line stack keeps the footprint close to Marriott's so the row stays
+    visually even rather than one logo dominating.
+  -->
+
+  <!-- SCU's red. Kept at full strength; the row's opacity-60 does the muting,
+       so the colour matches the other marks' treatment rather than pre-dimming. -->
+  <g fill="#862633" font-family="Georgia, 'Times New Roman', 'Iowan Old Style', serif" text-anchor="middle">
+    <text x="130" y="38" font-size="30" font-weight="700" letter-spacing="0.5">Santa Clara</text>
+    <text x="130" y="63" font-size="14" font-weight="400" letter-spacing="6.5">UNIVERSITY</text>
+  </g>
+
+  <!-- Hairline rule between the two lines, inset from the edges so it reads as
+       part of the lockup rather than a divider. -->
+  <rect x="74" y="47" width="112" height="1.4" fill="#862633" opacity="0.55"/>
+</svg>
