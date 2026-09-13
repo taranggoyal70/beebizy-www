@@ -1,22 +1,30 @@
 /** The founder story, kept public so the product has a human point of view. */
 
 import { ArrowRight } from "lucide-react";
-import { Link } from "wouter";
-import { BrandLogoLink } from "@/components/BrandLogo";
+import { BrandLogo } from "@/components/BrandLogo";
 import { Button } from "@/components/ui/button";
+import { studioUrl } from "@/lib/studioOrigin";
+
+const OPEN_STUDIO_URL = studioUrl("/app");
 
 export default function AboutPage() {
   return (
     <div className="min-h-dvh bg-primary-wash text-foreground">
       <header className="border-b border-primary/25 bg-primary-wash/90 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-10">
-          <BrandLogoLink to="/app" size="lg" />
+          <a
+            href={OPEN_STUDIO_URL}
+            className="inline-flex shrink-0 items-center rounded-md"
+            aria-label="Beebizy home"
+          >
+            <BrandLogo size="lg" />
+          </a>
           <nav className="flex items-center gap-2" aria-label="About navigation">
             <Button variant="ghost" asChild>
-              <Link href="/login">Log in</Link>
+              <a href={studioUrl("/login")}>Log in</a>
             </Button>
             <Button asChild>
-              <Link href="/app">Open Beebizy</Link>
+              <a href={OPEN_STUDIO_URL}>Open Beebizy</a>
             </Button>
           </nav>
         </div>
@@ -85,10 +93,10 @@ export default function AboutPage() {
               <h2 className="mt-2 text-2xl font-bold tracking-tight text-foreground">Plan the event, not the software.</h2>
             </div>
             <Button asChild size="lg">
-              <Link href="/app">
+              <a href={OPEN_STUDIO_URL}>
                 Open Beebizy
                 <ArrowRight className="ml-2 size-4" />
-              </Link>
+              </a>
             </Button>
           </div>
         </section>
