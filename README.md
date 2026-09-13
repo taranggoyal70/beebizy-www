@@ -1,3 +1,44 @@
+# beebizy-www
+
+The code published at **https://www.beebizy.com**.
+
+This repo exists so the live marketing site is tracked somewhere. Before it, the site was
+a CLI deploy with no repo behind it: the Vercel project that serves the domain is named
+`beebizy-landing`, but the deployment it serves was built from the `beebizy-b2b` source
+tree, and no branch anywhere recorded that. Changing the site meant guessing which commit
+was live.
+
+## What is in here
+
+History is `beebizy-b2b` up to `0c4cd12` ("Rename demo CTA", 2026-08-25), which is the
+commit that produced the live deployment. That is not an assumption: rebuilding `0c4cd12`
+yields a bundle whose human-readable strings are identical to the live
+`/assets/index-DWvrmTxm.js`, and the deployment was created 16 seconds after the commit.
+
+Everything after that commit is new work on this repo.
+
+## Deploying
+
+The domain is served by the Vercel project `beebizy-landing`
+(`prj_turpFIBbX3dwoTXhaE9JcTSGrWVw`). Vercel has to run the build, because
+`NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` is read at build time and only exists in that
+project's Production environment. A locally prebuilt deploy ships a bundle with no Clerk
+key and breaks sign-in.
+
+## Two things that will take the site down
+
+**Do not push to `taranggoyal70/beebizy-landing`.** Despite the name, that repo is a
+different website: a single static one-page file with no About page and none of this
+app's routes. It is still connected to the same Vercel project with Git auto-deploy on,
+so a push there republishes the domain with that one-pager. This has already happened
+twice.
+
+**Do not merge current `beebizy-b2b` wholesale.** `src/App.tsx` there now redirects any
+host that is not the Studio preview domain, so that code running on beebizy.com would
+bounce every visitor off the site. Port individual changes across deliberately.
+
+The rest of this README describes the application itself and came with the source.
+
 # Beebizy
 
 Event operations for teams that run events but aren't event companies — corporate ops,
