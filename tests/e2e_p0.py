@@ -64,12 +64,15 @@ with sync_playwright() as playwright:
             return played;
         }"""
     )
-    watcher_card = testimonial.locator("figure").filter(has_text="@wearewatchers")
-    watcher_card_text = watcher_card.inner_text()
-    assert "featured event" in watcher_card_text.casefold()
-    assert "Watcher Live Viewing Party" in watcher_card_text
-    assert "Las Vegas" in watcher_card_text
-    assert "Ayana Rising" not in watcher_card_text
+    cristina_card = testimonial.locator("figure").filter(has_text="Cristina Cismas Florea")
+    cristina_card_text = cristina_card.inner_text()
+    assert "Demo Day for eight years" in cristina_card_text
+    assert "badge printing for 700+ guests" in cristina_card_text
+    assert "fastest and easiest check-in" in cristina_card_text
+    assert "Assistant Director of the Bronco Accelerator" in cristina_card_text
+    assert "JECA Fund Venture Partner" in cristina_card_text
+    assert "Watcher Live Viewing Party" not in testimonial.inner_text()
+    assert "@wearewatchers" not in testimonial.inner_text()
 
     mobile_page = browser.new_page(viewport={"width": 390, "height": 844})
     mobile_page.goto(BASE_URL, wait_until="networkidle")
