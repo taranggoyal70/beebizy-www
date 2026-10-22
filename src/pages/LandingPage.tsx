@@ -121,11 +121,11 @@ const testimonials: Testimonial[] = [
   },
   {
     kind: "quote",
-    event: "Watcher Live Viewing Party - Las Vegas",
     quote:
-      "I loved working with them. We had such a great experience with Beebizy. They were on time and made everything super easy. I don’t love planning parties and surprises and they literally did it all! And it was very reasonable!",
-    name: "@wearewatchers",
-    initials: "WW",
+      "We’ve hosted Demo Day for eight years, and as the event keeps growing, check-in has always been one of our biggest challenges. This year, Beebizy handled our registrations, check-in, and badge printing for 700+ guests, and it was the fastest and easiest check-in we’ve ever had.",
+    name: "Cristina Cismas Florea",
+    role: "Assistant Director of the Bronco Accelerator and JECA Fund Venture Partner",
+    initials: "CCF",
   },
 ];
 
