@@ -159,10 +159,10 @@ function TestimonialSection() {
           </h2>
         </header>
 
-        <div className={`mt-10 grid items-stretch gap-6 md:mt-14 ${testimonialGridClass}`}>
+        <div className={`mt-10 grid items-start gap-6 md:mt-14 ${testimonialGridClass}`}>
           {testimonials.map((testimonial) => (
             <figure
-              className="flex h-full flex-col overflow-hidden rounded-[2rem] border border-amber-200 bg-white shadow-[0_20px_55px_rgba(120,78,0,0.10)]"
+              className="flex flex-col overflow-hidden rounded-[2rem] border border-amber-200 bg-white shadow-[0_20px_55px_rgba(120,78,0,0.10)]"
               key={testimonial.name}
             >
               {testimonial.kind === "video" ? (
@@ -183,7 +183,7 @@ function TestimonialSection() {
                   </video>
                 </div>
               ) : (
-                <blockquote className="m-7 flex-1 border-l-4 border-primary pl-5 md:m-8">
+                <blockquote className="m-7 border-l-4 border-primary pl-5 md:m-8">
                   {testimonial.event ? (
                     <div className="mb-6">
                       <p className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-amber-700">
@@ -200,7 +200,7 @@ function TestimonialSection() {
                 </blockquote>
               )}
 
-              <figcaption className="mt-auto flex items-center gap-4 border-t border-gray-200 px-7 py-6 md:px-8">
+              <figcaption className="flex items-center gap-4 border-t border-gray-200 px-7 py-6 md:px-8">
                 <div
                   aria-hidden="true"
                   className="grid size-12 shrink-0 place-items-center rounded-full bg-primary text-sm font-extrabold text-gray-950"
