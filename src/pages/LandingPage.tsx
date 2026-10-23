@@ -169,23 +169,23 @@ function AutomationFeatureSection() {
           </p>
         </header>
 
-        <section className="mt-12 overflow-hidden rounded-[2rem] bg-gray-950 px-5 py-7 text-white shadow-[0_24px_70px_rgba(17,24,39,0.18)] md:px-8 md:py-9" aria-labelledby="automation-flow-heading">
-          <div className="flex flex-col gap-3 border-b border-white/10 pb-6 md:flex-row md:items-end md:justify-between">
+        <section className="mt-12 overflow-hidden rounded-[2rem] border border-amber-200 bg-[#fff8df] px-5 py-7 text-gray-950 shadow-[0_24px_70px_rgba(120,78,0,0.12)] md:px-8 md:py-9" aria-labelledby="automation-flow-heading">
+          <div className="flex flex-col gap-3 border-b border-amber-200 pb-6 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.18em] text-amber-300"><Sparkles className="size-4" aria-hidden="true" />One connected workflow</p>
+              <p className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.18em] text-amber-800"><Sparkles className="size-4" aria-hidden="true" />One connected workflow</p>
               <h3 id="automation-flow-heading" className="mt-2 text-2xl font-extrabold tracking-tight md:text-3xl">Automated where it should be. Editable where it matters.</h3>
             </div>
-            <p className="max-w-md text-sm leading-6 text-white/60">Every step keeps the next one ready, without hiding control from the planner.</p>
+            <p className="max-w-md text-sm leading-6 text-gray-600">Every step keeps the next one ready, without hiding control from the planner.</p>
           </div>
           <ol className="mt-7 grid gap-3 md:grid-cols-5">
             {automationSteps.map((step, index) => (
-              <li key={step.label} className="group relative rounded-2xl border border-white/10 bg-white/[0.06] p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/60 hover:bg-white/[0.09]">
+              <li key={step.label} className="group relative rounded-2xl border border-amber-200 bg-white/80 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-400 hover:bg-white hover:shadow-md">
                 <div className="flex items-center justify-between gap-3">
                   <span className="grid size-8 place-items-center rounded-full bg-primary text-xs font-black text-gray-950">{index + 1}</span>
-                  {index < automationSteps.length - 1 ? <ArrowRight className="hidden size-4 text-white/25 md:block" aria-hidden="true" /> : <Check className="size-4 text-emerald-300" aria-hidden="true" />}
+                  {index < automationSteps.length - 1 ? <ArrowRight className="hidden size-4 text-amber-500 md:block" aria-hidden="true" /> : <Check className="size-4 text-emerald-600" aria-hidden="true" />}
                 </div>
                 <p className="mt-4 font-extrabold">{step.label}</p>
-                <p className="mt-1 text-xs leading-5 text-white/55">{step.detail}</p>
+                <p className="mt-1 text-xs leading-5 text-gray-500">{step.detail}</p>
               </li>
             ))}
           </ol>

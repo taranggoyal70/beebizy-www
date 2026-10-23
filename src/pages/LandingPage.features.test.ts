@@ -32,4 +32,10 @@ describe("homepage automation features", () => {
     expect(source).toContain('featureHost.id = "features"');
     expect(source).toContain('featureRoot.render(<AutomationFeatureSection />)');
   });
+
+  it("uses the warm Beebizy palette for the automation flow", () => {
+    expect(source).toContain('border border-amber-200 bg-[#fff8df]');
+    expect(source).toContain('bg-white/80');
+    expect(source).toContain('text-amber-800');
+  });
 });
