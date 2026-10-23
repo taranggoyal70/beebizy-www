@@ -129,10 +129,67 @@ const testimonials: Testimonial[] = [
   },
 ];
 
+function TestimonialCard({ testimonial, compactVideo = false }: { testimonial: Testimonial; compactVideo?: boolean }) {
+  return (
+    <figure className="flex flex-col overflow-hidden rounded-[2rem] border border-amber-200 bg-white shadow-[0_20px_55px_rgba(120,78,0,0.10)]">
+      {testimonial.kind === "video" ? (
+        <div className="relative flex items-center justify-center bg-gray-950">
+          <span className="absolute left-4 top-4 z-10 rounded-full bg-primary px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.14em] text-gray-950 shadow-sm">
+            Video testimonial
+          </span>
+          <video
+            aria-label={`${testimonial.name} video testimonial`}
+            className={`aspect-[9/16] w-full bg-gray-950 object-contain ${compactVideo ? "max-h-[30rem]" : "max-h-[42rem]"}`}
+            controls
+            playsInline
+            poster={testimonial.video.poster}
+            preload="metadata"
+          >
+            <source src={testimonial.video.src} type="video/mp4" />
+            Your browser does not support embedded video.
+          </video>
+        </div>
+      ) : (
+        <blockquote className="m-7 border-l-4 border-primary pl-5 md:m-8">
+          {testimonial.event ? (
+            <div className="mb-6">
+              <p className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-amber-700">
+                Featured event
+              </p>
+              <h3 className="mt-2 text-xl font-extrabold leading-snug tracking-tight text-gray-950">
+                {testimonial.event}
+              </h3>
+            </div>
+          ) : null}
+          <p className="text-base font-medium leading-relaxed tracking-[-0.01em] text-gray-700 md:text-lg">
+            {testimonial.quote}
+          </p>
+        </blockquote>
+      )}
+
+      <figcaption className="flex items-center gap-4 border-t border-gray-200 px-7 py-6 md:px-8">
+        <div
+          aria-hidden="true"
+          className="grid size-12 shrink-0 place-items-center rounded-full bg-primary text-sm font-extrabold text-gray-950"
+        >
+          {testimonial.initials}
+        </div>
+        <div>
+          <cite className="font-bold not-italic text-gray-950">{testimonial.name}</cite>
+          {testimonial.role ? <p className="mt-1 text-sm text-gray-500">{testimonial.role}</p> : null}
+        </div>
+      </figcaption>
+    </figure>
+  );
+}
+
 function TestimonialSection() {
+  const featuredVideo = testimonials.find((testimonial) => testimonial.kind === "video");
+  const quoteTestimonials = testimonials.filter((testimonial) => testimonial.kind === "quote");
+  const editorialLayout = Boolean(featuredVideo && quoteTestimonials.length === 2);
   const testimonialGridClass =
-    testimonials.length >= 3
-      ? "lg:grid-cols-3"
+    editorialLayout
+      ? "lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]"
       : testimonials.length === 2
         ? "lg:mx-auto lg:max-w-5xl lg:grid-cols-2"
         : "lg:mx-auto lg:max-w-lg";
@@ -160,60 +217,14 @@ function TestimonialSection() {
         </header>
 
         <div className={`mt-10 grid items-start gap-6 md:mt-14 ${testimonialGridClass}`}>
-          {testimonials.map((testimonial) => (
-            <figure
-              className="flex flex-col overflow-hidden rounded-[2rem] border border-amber-200 bg-white shadow-[0_20px_55px_rgba(120,78,0,0.10)]"
-              key={testimonial.name}
-            >
-              {testimonial.kind === "video" ? (
-                <div className="relative flex flex-1 items-center justify-center bg-gray-950">
-                  <span className="absolute left-4 top-4 z-10 rounded-full bg-primary px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.14em] text-gray-950 shadow-sm">
-                    Video testimonial
-                  </span>
-                  <video
-                    aria-label={`${testimonial.name} video testimonial`}
-                    className="aspect-[9/16] max-h-[42rem] w-full bg-gray-950 object-contain"
-                    controls
-                    playsInline
-                    poster={testimonial.video.poster}
-                    preload="metadata"
-                  >
-                    <source src={testimonial.video.src} type="video/mp4" />
-                    Your browser does not support embedded video.
-                  </video>
-                </div>
-              ) : (
-                <blockquote className="m-7 border-l-4 border-primary pl-5 md:m-8">
-                  {testimonial.event ? (
-                    <div className="mb-6">
-                      <p className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-amber-700">
-                        Featured event
-                      </p>
-                      <h3 className="mt-2 text-xl font-extrabold leading-snug tracking-tight text-gray-950">
-                        {testimonial.event}
-                      </h3>
-                    </div>
-                  ) : null}
-                  <p className="text-base font-medium leading-relaxed tracking-[-0.01em] text-gray-700 md:text-lg">
-                    {testimonial.quote}
-                  </p>
-                </blockquote>
-              )}
-
-              <figcaption className="flex items-center gap-4 border-t border-gray-200 px-7 py-6 md:px-8">
-                <div
-                  aria-hidden="true"
-                  className="grid size-12 shrink-0 place-items-center rounded-full bg-primary text-sm font-extrabold text-gray-950"
-                >
-                  {testimonial.initials}
-                </div>
-                <div>
-                  <cite className="font-bold not-italic text-gray-950">{testimonial.name}</cite>
-                  {testimonial.role ? <p className="mt-1 text-sm text-gray-500">{testimonial.role}</p> : null}
-                </div>
-              </figcaption>
-            </figure>
-          ))}
+          {editorialLayout && featuredVideo ? (
+            <>
+              <TestimonialCard testimonial={featuredVideo} compactVideo />
+              <div className="grid content-start gap-6">
+                {quoteTestimonials.map((testimonial) => <TestimonialCard key={testimonial.name} testimonial={testimonial} />)}
+              </div>
+            </>
+          ) : testimonials.map((testimonial) => <TestimonialCard key={testimonial.name} testimonial={testimonial} />)}
         </div>
       </div>
     </div>
