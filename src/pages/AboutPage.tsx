@@ -4,9 +4,6 @@ import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { Button } from "@/components/ui/button";
-import { studioUrl } from "@/lib/studioOrigin";
-
-const OPEN_STUDIO_URL = studioUrl("/app");
 
 export default function AboutPage() {
   return (
@@ -22,7 +19,7 @@ export default function AboutPage() {
           </Link>
           <nav className="flex items-center" aria-label="About navigation">
             <Button asChild>
-              <a href={OPEN_STUDIO_URL}>Open Beebizy</a>
+              <Link href="/?sales=1">Book a Free Demo</Link>
             </Button>
           </nav>
         </div>
@@ -91,10 +88,10 @@ export default function AboutPage() {
               <h2 className="mt-2 text-2xl font-bold tracking-tight text-foreground">Plan the event, not the software.</h2>
             </div>
             <Button asChild size="lg">
-              <a href={OPEN_STUDIO_URL}>
-                Open Beebizy
+              <Link href="/?sales=1">
+                Book a Free Demo
                 <ArrowRight className="ml-2 size-4" />
-              </a>
+              </Link>
             </Button>
           </div>
         </section>
