@@ -33,9 +33,17 @@ describe("homepage automation features", () => {
     expect(source).toContain('featureRoot.render(<AutomationFeatureSection />)');
   });
 
-  it("uses the warm Beebizy palette for the automation flow", () => {
-    expect(source).toContain('border border-amber-200 bg-[#fff8df]');
+  it("uses the yellow, black, and white Beebizy palette for the automation flow", () => {
+    expect(source).toContain('border border-primary/45 bg-primary/10');
     expect(source).toContain('bg-white/80');
-    expect(source).toContain('text-amber-800');
+    expect(source).toContain('text-gray-950');
+    expect(source).not.toContain('rgba(120,78,0');
+  });
+
+  it("positions the homepage for universities, schools, and nonprofits", () => {
+    expect(source).toContain("Universities & Colleges");
+    expect(source).toContain(">Schools<");
+    expect(source).toContain(">Nonprofits<");
+    expect(source.toLowerCase()).not.toContain("enterprise");
   });
 });

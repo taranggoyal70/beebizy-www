@@ -38,8 +38,8 @@ export default function AboutPage() {
             <div className="mt-10 max-w-2xl space-y-6 text-lg leading-8 text-muted-foreground">
               <p>
                 <strong className="font-bold text-foreground">Laila Marshall</strong> spent over a decade in the field,
-                coordinating more than <strong className="font-bold text-foreground">500 events</strong> across corporate
-                conferences, galas, product launches, and everything in between.
+                coordinating more than <strong className="font-bold text-foreground">500 events</strong> across university
+                programs, galas, community events, and everything in between.
               </p>
               <p>
                 After years of juggling spreadsheets, endless email threads, and tools built without the realities of
@@ -50,8 +50,8 @@ export default function AboutPage() {
                 how event teams actually operate, from the first venue decision to the post-event wrap-up.
               </p>
               <p>
-                Today, Beebizy helps teams at Fortune 500 companies, nonprofits, and everything in between bring their
-                events to life without losing their minds in the process.
+                Today, Beebizy helps universities, schools, and nonprofits bring their events to life without losing
+                their minds in the process.
               </p>
             </div>
 
