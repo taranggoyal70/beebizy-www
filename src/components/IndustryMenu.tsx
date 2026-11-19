@@ -10,7 +10,10 @@ export default function IndustryMenu() {
       if (!root.current?.contains(event.target as Node)) setOpen(false);
     };
     const keyboard = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        if (root.current?.contains(document.activeElement)) root.current.querySelector("button")?.focus();
+        setOpen(false);
+      }
     };
     document.addEventListener("pointerdown", outside);
     document.addEventListener("keydown", keyboard);
