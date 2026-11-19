@@ -522,3 +522,10 @@
 .wing-left      { transform-origin: 100% 50%; animation: wing-beat-left 0.18s ease-in-out infinite; }
 .wing-right     { transform-origin: 0% 50%; animation: wing-beat-right 0.18s ease-in-out infinite; }
 .bee-hover      { animation: bee-hover 4.5s ease-in-out infinite; }
+/* Keep industry navigation responsive alongside the legacy homepage stylesheet. */
+.beebizy-industry-desktop { display: none; }
+.beebizy-industry-mobile { display: block; }
+@media (min-width: 640px) {
+  .beebizy-industry-desktop { display: block; }
+  .beebizy-industry-mobile { display: none; }
+}

@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
+import IndustryMenu from "@/components/IndustryMenu";
+import { INDUSTRIES } from "./industries";
 import {
   ArrowRight,
   BadgeDollarSign,
@@ -36,7 +38,7 @@ function HeaderMenu() {
   }, []);
 
   return (
-    <div className="relative" ref={menuRef}>
+    <div className="flex items-center gap-2"><div className="beebizy-industry-desktop"><IndustryMenu /></div><div className="relative" ref={menuRef}>
       <button
         type="button"
         aria-controls="header-navigation-menu"
@@ -76,6 +78,10 @@ function HeaderMenu() {
           >
             Features
           </a>
+          <div className="beebizy-industry-mobile border-y border-primary/25 py-2">
+            <p className="px-4 py-2 text-xs font-semibold text-muted-foreground">Industries</p>
+            {INDUSTRIES.map(industry => <a key={industry.id} href={`/industries/${industry.id}`} className="block rounded-xl px-4 py-3 text-sm font-bold text-gray-900 hover:bg-primary/10" onClick={() => setIsOpen(false)}>{industry.label}</a>)}
+          </div>
           <a
             href="/about"
             className="block rounded-xl px-4 py-3 text-sm font-bold text-gray-900 transition-colors hover:bg-amber-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
@@ -85,7 +91,7 @@ function HeaderMenu() {
           </a>
         </nav>
       ) : null}
-    </div>
+    </div></div>
   );
 }
 

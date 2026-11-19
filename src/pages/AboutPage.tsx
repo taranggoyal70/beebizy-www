@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { Button } from "@/components/ui/button";
+import IndustryMenu from "@/components/IndustryMenu";
 
 export default function AboutPage() {
   return (
@@ -17,7 +18,8 @@ export default function AboutPage() {
           >
             <BrandLogo size="lg" />
           </Link>
-          <nav className="flex items-center" aria-label="About navigation">
+          <nav className="flex items-center gap-3" aria-label="About navigation">
+            <IndustryMenu />
             <Button asChild>
               <Link href="/?sales=1">Book a Free Demo</Link>
             </Button>
