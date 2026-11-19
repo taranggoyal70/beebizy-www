@@ -4,12 +4,13 @@ import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { Button } from "@/components/ui/button";
+import IndustryMenu from "@/components/IndustryMenu";
 
 export default function AboutPage() {
   return (
     <div className="min-h-dvh bg-primary-wash text-foreground">
       <header className="border-b border-primary/25 bg-primary-wash/90 backdrop-blur">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-10">
+        <div className="mx-auto flex min-h-20 max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-3 lg:px-10">
           <Link
             href="/"
             className="inline-flex shrink-0 items-center rounded-md"
@@ -17,7 +18,8 @@ export default function AboutPage() {
           >
             <BrandLogo size="lg" />
           </Link>
-          <nav className="flex items-center" aria-label="About navigation">
+          <nav className="flex items-center gap-3" aria-label="About navigation">
+            <IndustryMenu />
             <Button asChild>
               <Link href="/?sales=1">Book a Free Demo</Link>
             </Button>

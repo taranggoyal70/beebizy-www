@@ -44,6 +44,7 @@ import BoardDetail from "@/screens/library/BoardDetail";
 import Settings from "@/screens/Settings";
 import { PublicEventPage, PublicTicketsPage } from "@/screens/public/PublicEvent";
 import { isDemoSession } from "@/app/demo";
+import IndustryPage from "@/pages/IndustryPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -96,6 +97,7 @@ function Routes() {
     <Switch>
       <Route path="/" component={LandingPage} />
       <Route path="/about" component={AboutPage} />
+      <Route path="/industries/:id">{params => <IndustryPage id={params.id} />}</Route>
       <Route path="/login" component={LoginPage} />
       <Route path="/login/*" component={LoginPage} />
       <Route path="/access-denied" component={AccessDeniedPage} />
